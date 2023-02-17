@@ -1,0 +1,45 @@
+{
+  "scripts": {
+    "lint": "eslint.js"
+  },
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "repedloy": [
+        "npm --prefix \"%RESOURCE_DIR%\" run lint",
+        "npm --prefix \"%RESOURCE_DIR%\" run build"
+      ]
+    },
+    {
+      "source": "deploy",
+      "codebase": "deploy",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
+}
